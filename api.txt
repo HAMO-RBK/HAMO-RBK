@@ -1,0 +1,145 @@
+this is all the route are created inside this project be free to check it
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/auth/login
+post request
+the request:
+{login:xxxxxxxxx
+password:xxxxxxxxx}
+the response:
+"Successfully Authenticated"
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/auth/register
+post request
+the request:
+{username:xxxxxxxxx
+password:xxxxxxxxx}
+the response:
+"User Created"
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/auth/user
+get request
+the request:
+nothing
+the response:
+if not exist
+[{ username: "", role: "" }]
+else
+[{ username: ***************, role: ************ ,password:************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/user
+get request
+the request:
+nothing
+the response:
+nothing
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/product
+get request
+the request:
+nothing
+the response:
+[{ _id: ***************, id: ************ ,name:************},categorie:*********,brand:************,image:**************,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/product
+post request
+the request:
+{ id: ************ ,name:************},categorie:*********,brand:************,image:**************,description:*****************}
+the response:
+[{ _id: ***************, id: ************ ,name:************},categorie:*********,brand:************,image:**************,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/product
+put request
+the request:
+{ id: ************ ,name:************},categorie:*********,brand:************,image:**************,description:*****************}
+the response:
+[{ _id: ***************, id: ************ ,name:************},categorie:*********,brand:************,image:**************,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/product/:id
+delete request
+the request:
+nothing
+the response:
+[{ _id: ***************, id: ************ ,name:************},categorie:*********,brand:************,image:**************,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/categorie
+get request
+the request:
+nothing
+the response:
+[{ _id: ***************, id: ************ ,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/categorie
+post request
+{id: ************ ,description:*****************}
+nothing
+the response:
+[{ _id: ***************, id: ************ ,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/brand
+get request
+the request:
+nothing
+the response:
+[{ id: ************ ,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/brand
+post request
+{ id: ************ ,description:*****************}
+nothing
+the response:
+[{ _id: ***************, id: ************ ,description:*****************}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/custumer
+get request
+the request:
+nothing
+the response:
+[{id: String,name: String,genre: String,date: String, phone: Number,email: String, points: Number},all custumomer]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/custumer
+
+post request
+{id: String,name: String,genre: String,date: String, phone: Number,email: String, points: Number}
+
+the response:
+[{ _id: ***************, id: String,name: String,genre: String,date: String, phone: Number,email: String, points: Number}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/custumer
+
+put request
+{id: String,name: String,genre: String,date: String, phone: Number,email: String, points: Number}
+
+the response:
+[{ _id: ***************, id: String,name: String,genre: String,date: String, phone: Number,email: String, points: Number}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/custumer/_id
+delete request
+nothing
+
+the response:
+[{ _id: ***************, id: String,name: String,genre: String,date: String, phone: Number,email: String, points: Number}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/stat
+get request
+nothing
+the response:
+[{ _id: "label", quantity:"the some of data in the bill²"}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/bill
+get request
+nothing
+the response:
+[{ _id: "", custumer: { type: mongoose.Schema.Types.ObjectId, ref: "custumer" }, order: [ {product: { type: mongoose.Schema.Types.ObjectId, ref: "product" }, quantity: Number,
+name: String }...],total: Number
+}]
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+http://localhost:8000/api/bill
+post request
+{ _id: "", custumer: { type: mongoose.Schema.Types.ObjectId, ref: "custumer" }, order: [ {product: { type: mongoose.Schema.Types.ObjectId, ref: "product" }, quantity: Number,
+name: String }...],total: Number
+}
+the response:
+[{ _id: "", custumer: { type: mongoose.Schema.Types.ObjectId, ref: "custumer" }, order: [ {product: { type: mongoose.Schema.Types.ObjectId, ref: "product" }, quantity: Number,
+name: String }...],total: Number
+}]
