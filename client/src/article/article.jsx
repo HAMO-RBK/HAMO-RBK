@@ -5,6 +5,7 @@ import Articleadd from "./articleadd.jsx";
 import Articleupdate from "./articleupdate.jsx";
 import Brandeadd from "./brandadd.jsx";
 import Categorieadd from "./categorieadd.jsx";
+import axios from "axios";
 
 class Article extends Component {
   constructor(props) {
@@ -17,62 +18,77 @@ class Article extends Component {
     };
     this.changeView = this.changeView.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.getProduct = this.getProduct.bind(this);
   }
   changeView(view, obj) {
-    if (view === "Update") {
-      this.setState({
-        mod: obj,
-        view: view
-      });
-      return;
-    }
     this.setState({
+      mod: obj,
       view: view
     });
   }
+  getProduct() {
+    axios
+      .get("http://localhost:8000/api/product")
+      .then((x) => this.setState({ data: x.data }));
+  }
+  componentDidMount() {
+    this.getProduct();
+  }
+
   renderView() {
     if (this.state.view === "all") {
       return (
-        <Listarticle changeView={this.changeView} data={this.state.data} />
+        <Listarticle
+          changeView={this.changeView}
+          data={this.state.data}
+          getProduct={this.getProduct}
+        />
       );
     } else if (this.state.view === "Addarticle") {
-      return <Articleadd />;
+      return (
+        <Articleadd getProduct={this.getProduct} changeView={this.changeView} />
+      );
     } else if (this.state.view === "Update") {
-      return <Articleupdate data={this.state.mod} />;
+      return (
+        <Articleupdate
+          data={this.state.mod}
+          getProduct={this.getProduct}
+          changeView={this.changeView}
+        />
+      );
     } else if (this.state.view === "Addbrand") {
-      return <Brandeadd />;
+      return (
+        <Brandeadd getProduct={this.getProduct} changeView={this.changeView} />
+      );
     } else if (this.state.view === "Addcategorie") {
-      return <Categorieadd />;
+      return (
+        <Categorieadd
+          getProduct={this.getProduct}
+          changeView={this.changeView}
+        />
+      );
     }
   }
-  componentDidMount() {
-    $.ajax({
-      type: "GET",
-      url: "/api/product",
-      success: (data) => {
-        this.setState({
-          data: data
-        });
-        console.log(data);
-      },
-      error: (err) => console.log(err)
-    });
-  }
+
   render() {
     return (
       <div>
         <button type="button" onClick={() => this.changeView("all")}>
-          List Article
+          List Product
         </button>
+        <br />
         <button type="button" onClick={() => this.changeView("Addarticle")}>
-          Add Article
+          Add Product
         </button>
+        <br />
         <button type="button" onClick={() => this.changeView("Addcategorie")}>
           Add Categorie
         </button>
+        <br />
         <button type="button" onClick={() => this.changeView("Addbrand")}>
           Add Brand
         </button>
+        <br />
         {this.renderView()}
       </div>
     );

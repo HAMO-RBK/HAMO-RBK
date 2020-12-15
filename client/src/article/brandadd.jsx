@@ -30,48 +30,53 @@ class Brandeadd extends React.Component {
       type: "POST",
       url: "/api/brand",
       data: data,
-      success: (data) => console.log(data),
+      success: (data) => {
+        this.props.getProduct();
+        this.props.changeView("all");
+      },
       error: (err) => console.log(err)
     });
   }
 
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.handelsubmit}>
-          <h1>Add Brand</h1>
-          <label>
-            ID :<br />
-            <input
-              type="text"
-              name="id"
-              value={this.state.id}
-              onChange={this.handelChange}
-            />
-          </label>
-          <br />
-          <label>
-            Name :<br />
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handelChange}
-            />
-          </label>
-          <br />
-          <label>
-            desciption :<br />
-            <input
-              type="textarea"
-              name="description"
-              value={this.state.description}
-              onChange={this.handelChange}
-            />
-          </label>
-          <br />
-          <input type="submit" value="Envoyer" />
-        </form>
+      <div className="card">
+        <div className="container">
+          <form onSubmit={this.handelsubmit}>
+            <h1>Add Brand</h1>
+            <label>
+              ID :<br />
+              <input
+                type="text"
+                name="id"
+                value={this.state.id}
+                onChange={this.handelChange}
+              />
+            </label>
+            <br />
+            <label>
+              Name :<br />
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.handelChange}
+              />
+            </label>
+            <br />
+            <label>
+              desciption :<br />
+              <input
+                type="textarea"
+                name="description"
+                value={this.state.description}
+                onChange={this.handelChange}
+              />
+            </label>
+            <br />
+            <input type="submit" value="Envoyer" />
+          </form>
+        </div>
       </div>
     );
   }
